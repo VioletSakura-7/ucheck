@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklist Checker</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<h1>Address Check in TRON USDT</h1>
+<form id="blacklist-form">
+    <label for="address">Enter TRON Address:</label>
+    <input type="text" id="address" name="address" required>
+    <button type="submit">Check</button>
+</form>
+<div id="result">
+    <span id="status-icon"></span>
+    <span id="status-text"></span>
+    <span id="balance-text"></span> <!-- 新增的余额信息元素 -->
+</div>
+
+<!-- 模态框 -->
+<div id="languageModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Select Language:</p>
+        <button id="englishBtn">English</button>
+        <button id="chineseBtn">中文</button>
+    </div>
+</div>
+<!-- 引入 tronweb.js -->
+<script src="https://cdn.jsdelivr.net/npm/tronweb@4.0.0/dist/TronWeb.min.js"></script>
+<script src="js/check.js"></script>
+<script src="js/language.js"></script>
+<script>
+    // Check if language is already set
+    const userLanguage = localStorage.getItem('userLanguage');
+    if (!userLanguage) {
+        // Redirect to setup page if not set
+        window.location.href = 'setup.html';
+    } else {
+        // Set the language based on user preference
+        setLanguage(userLanguage);
+    }
+
+    // Function to set language
+    function setLanguage(lang) {
+        // Update the language in the language.js module
+        currentLanguage = lang; // Ensure currentLanguage is updated
+        updateLanguage(); // Call the update function from language.js
+    }
+
+    // Language selection buttons (remove these as they are now in setup.html)
+    // ...
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Setup</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<h1>Select Your Language</h1>
+<form id="select-language">
+    <label for="address">Please select your preferred language to continue:</label>
+    <button id="englishBtn">English</button>
+    <button id="chineseBtn">中文</button>
+</form>
+
+<script>
+    // Language selection buttons
+    document.getElementById('englishBtn').onclick = function(event) {
+        event.preventDefault(); // 阻止默认行为
+        if (confirm('Are you sure in English? \nAfter confirmation, you can still long press the blank space to reselect the language.')) { // 添加确认框
+            localStorage.setItem('userLanguage', 'en'); // 保存偏好
+            window.location.href = 'index.html'; // 重定向到主页面
+        }
+    };
+
+    document.getElementById('chineseBtn').onclick = function(event) {
+        event.preventDefault(); // 阻止默认行为
+        if (confirm('您确定要选择中文吗？\n确认后您仍可以长按空白处重新选择您的语言偏好。')) { // 添加确认框
+            localStorage.setItem('userLanguage', 'zh'); // 保存偏好
+            window.location.href = 'index.html'; // 重定向到主页面
+        }
+    };
+</script>
+</body>
+</html>
